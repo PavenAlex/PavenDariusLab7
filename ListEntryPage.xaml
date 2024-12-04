@@ -16,5 +16,6 @@
  Detail="{Binding Date}" />
             </DataTemplate>
         </ListView.ItemTemplate>
-    </ListView>
+    </ListView>
+
 </ContentPage>

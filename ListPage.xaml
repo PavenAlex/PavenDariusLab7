@@ -3,20 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PavenDariusLab7.ListPage"
              Title="ListPage">
-    <StackLayout Margin="20">
-        <Editor Placeholder="Enter the description of the shopping list"
+    <ContentPage.Content xmlns:local="clr-namespace:PavenDariusLab7">
+        <StackLayout Margin="20">
+            <Editor Placeholder="Enter the description of the shopping list"
  Text="{Binding Description}"
- HeightRequest="100" />
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Button Text="Save"
+ HeightRequest="50" >
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save"
  Clicked="OnSaveButtonClicked" />
-            <Button Grid.Column="1"
+                <Button Grid.Column="1"
  Text="Delete"
  Clicked="OnDeleteButtonClicked"/>
-        </Grid>
-    </StackLayout>
+            </Grid>
+            <ListView x:Name="listView"
+ Margin="20">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Detail="{Binding Description}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Add/Choose Item to buy" MaximumWidthRequest="300"
+                    Clicked="OnChooseButtonClicked"/>
+            <Button Text="Delete Item" MaximumWidthRequest="300"
+                    Clicked="OnDeleteButtonClicked" />
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
